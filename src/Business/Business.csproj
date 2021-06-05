@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Core\Models\Enums.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\Validations\" />
+    <Folder Include="Usuarios\Interfaces\" />
+    <Folder Include="Usuarios\Validations\" />
+    <Folder Include="Usuarios\Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="9.2.2" />
+  </ItemGroup>
+
+</Project>

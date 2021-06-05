@@ -1,0 +1,67 @@
+﻿@model Web.ViewModels.OperacaoViewModel
+
+@{
+    ViewData["Title"] = "CreateOperacao";
+}
+
+
+<h1><i>Criar Operação</i></h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOperacao" style="width:500px;padding:5px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control" id="valor" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataVencimento" class="control-label"></label>
+                <input asp-for="DataVencimento" class="form-control" />
+                <span asp-validation-for="DataVencimento" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group" style="width:100%;">
+                Selecione a Natureza da Operação:<br>
+                <select asp-for="NaturezaOperacaoId" asp-items="Model.ListaNatureza" size="5"  class="form-control"></select>
+                <span asp-validation-for="NaturezaOperacao" class="text-danger"></span>
+            </div>
+
+              <div class="form-group" style="width:100%;">
+                Selecione o Tipo da Operação:<br>
+                <select asp-for="TipoOperacao" asp-items="Model.ListaOperacao" size="2"  class="form-control"></select>
+                <span asp-validation-for="TipoOperacao" class="text-danger"></span>
+            </div>           
+
+            <div class="form-group">
+                <input type="submit" value="Criar Operação" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Cancelar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} 
+    <script>
+        $(document).ready(function(){
+
+            $("#valor").mask("999.999.990,00",{ reverse : true});
+        });
+    </script>  
+}

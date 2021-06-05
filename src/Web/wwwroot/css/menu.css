@@ -1,0 +1,62 @@
+/*PROPRIEDADES MENU ADMINISTRACAO*/
+
+.menu-lateral {
+    position: absolute;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    display: block;
+    margin: 0;
+    padding: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    background-color: #5c21c9;
+}
+
+.ul {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.514);
+    max-width: 100%;
+}
+
+.ul:last-child {
+    border-bottom: none;
+}
+
+.ul a {
+    width: 100%;
+    text-decoration: none;
+    padding: 0 50px;
+}
+
+.ul a .icon {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ul a .icon i {
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    text-align: center;
+}
+
+.ul a:hover .icon i {
+    font-size: 50px;
+    color: rgb(175, 17, 196);
+}
+
+.name {
+    color: white;
+    font-family: sans-serif;
+}
+
+.ul a:hover .name {
+    color: rgb(175, 17, 196);
+}
+
+.conteudo {
+    position: relative;
+    left: 10%;
+    margin-right: 50px;
+}

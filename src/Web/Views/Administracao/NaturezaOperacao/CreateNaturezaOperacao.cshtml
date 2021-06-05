@@ -1,0 +1,28 @@
+@model Web.ViewModels.NaturezaOperacaoViewModel
+
+@{
+    ViewData["Title"] = "Criar Natureza";
+}
+
+<h3>Tela de Cadastro de Natureza Opreção</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SalvaNaturezaOperacao" style="width:500px;padding:5px;">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label"></label>
+                <input asp-for="Descricao" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Criar Natureza" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Cancelar</a>
+</div>
