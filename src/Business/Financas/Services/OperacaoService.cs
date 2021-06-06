@@ -55,6 +55,11 @@ namespace Business.Financas.Services
             throw new NotImplementedException();
         }
 
+        public Task Remover(Operacao entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Remover(Guid Id)
         {
             throw new NotImplementedException();
@@ -70,9 +75,6 @@ namespace Business.Financas.Services
             throw new NotImplementedException();
         }
 
-        Task<int> IRepository<Operacao>.Remover(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

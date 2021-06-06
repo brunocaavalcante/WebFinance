@@ -12,7 +12,7 @@ namespace Business.Core.Interfaces
         Task<TEntity> ObterPorId(Guid Id);
         Task<List<TEntity>> ObterTodos();
         Task Atualizar(TEntity entity);
-        Task<int> Remover(Guid Id);
+        Task Remover(TEntity entity);
         Task<int> SaveChanges();
     }
 }

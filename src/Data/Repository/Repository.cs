@@ -20,21 +20,14 @@ namespace Data.Repository
         }
         public virtual async Task Adicionar(TEntity entity)
         {
-            try
-            {
-                DbSet.Add(entity);
-                await SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            DbSet.Add(entity);
+            await SaveChanges();
         }
 
         public Task Atualizar(TEntity entity)
         {
             throw new NotImplementedException();
-        }     
+        }
 
         public virtual async Task<TEntity> ObterPorId(Guid Id)
         {
@@ -46,9 +39,10 @@ namespace Data.Repository
             throw new NotImplementedException();
         }
 
-        public Task<int> Remover(Guid Id)
+        public virtual async Task Remover(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(entity); //O metodo remove pede um entity por isso estanciamos apenas uma entity passando o id pra ela
+            await SaveChanges();
         }
 
         public async Task<int> SaveChanges()

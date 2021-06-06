@@ -11,6 +11,6 @@ namespace Business.Financas.Interfaces
         Task<NaturezaOperacao> ObterPorId(Guid Id);
         Task Adicionar(NaturezaOperacao item);
         Task Atualizar(NaturezaOperacao item);
-        Task Remover(Guid Id);
+        Task Delete(NaturezaOperacao item);
     }
 }

@@ -50,9 +50,9 @@ namespace Business.Financas.Services
             throw new NotImplementedException();
         }
 
-        public Task Remover(Guid Id)
+        public async Task Delete(NaturezaOperacao item)
         {
-            throw new NotImplementedException();
+            await _naturezaOperacaoRepository.Remover(item);
         }
 
     }

@@ -24,9 +24,9 @@
         </dd>
     </dl>
 
-    <form asp-action="Delete">
+    <form asp-action="DeleteNatureza">
         <input type="hidden" asp-for="Id" />
-        <a href="javascript:window.history.back();" class="btn btn-primary">Voltar</a>
+        <a asp-action="NaturezaOperacaoIndex" class="btn btn-primary">Voltar</a>
         <input type="submit" value="Excluir" class="btn btn-danger" />
     </form>
 </div>

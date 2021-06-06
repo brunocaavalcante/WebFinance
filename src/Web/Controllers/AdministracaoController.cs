@@ -65,10 +65,10 @@ namespace Web.Controllers
         {
             if (Id == null) return NotFound();
 
-            var natureza =  _autoMapper.Map<NaturezaOperacaoViewModel>(await _naturezaOperacaoService.ObterPorId(Id));
+            var natureza = _autoMapper.Map<NaturezaOperacaoViewModel>(await _naturezaOperacaoService.ObterPorId(Id));
 
             if (natureza == null) return NotFound();
-        
+
             return View("NaturezaOperacao/DeleteNaturezaOperacao", natureza);
         }
 
@@ -81,9 +81,11 @@ namespace Web.Controllers
 
             if (natureza == null) return NotFound();
 
-            await _naturezaOperacaoService.Remover(Id);
+            await _naturezaOperacaoService.Delete(natureza);
 
-            return View("NaturezaOperacao/NaturezaOperacaoIndex");
+            var lista = _autoMapper.Map<List<NaturezaOperacaoViewModel>>(await _naturezaOperacaoService.ObterNaturezaOpercao());
+
+            return View("NaturezaOperacao/NaturezaOperacaoIndex", lista);
         }
 
         [HttpPut]
