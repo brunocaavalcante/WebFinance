@@ -51,7 +51,7 @@ namespace Web.Controllers
             natureza.Id = Guid.NewGuid();
 
             await _naturezaOperacaoService.Adicionar(natureza);
-            return RedirectToAction("Index");
+            return RedirectToAction("NaturezaOperacaoIndex");
         }
 
         [HttpGet]
@@ -100,7 +100,7 @@ namespace Web.Controllers
 
             await _naturezaOperacaoService.Atualizar(model);
 
-            return await NaturezaOperacaoIndex();
+            return RedirectToAction("NaturezaOperacaoIndex");
         }
 
         #endregion
