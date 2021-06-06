@@ -24,9 +24,11 @@ namespace Business.Financas.Services
             await _naturezaOperacaoRepository.Adicionar(entity);
         }
 
-        public Task Atualizar(NaturezaOperacao entity)
+        public async Task Atualizar(NaturezaOperacao entity)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(entity.Descricao)) return;
+
+            await _naturezaOperacaoRepository.Atualizar(entity);
         }
 
         public void Dispose()

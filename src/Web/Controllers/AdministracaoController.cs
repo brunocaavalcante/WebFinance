@@ -55,12 +55,6 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DetalhesNaturezaOperacao(Guid Id)
-        {
-            return Ok();
-        }
-
-        [HttpGet]
         public async Task<IActionResult> DeleteNaturezaOpercao(Guid Id)
         {
             if (Id == null) return NotFound();
@@ -83,15 +77,30 @@ namespace Web.Controllers
 
             await _naturezaOperacaoService.Delete(natureza);
 
-            var lista = _autoMapper.Map<List<NaturezaOperacaoViewModel>>(await _naturezaOperacaoService.ObterNaturezaOpercao());
-
-            return View("NaturezaOperacao/NaturezaOperacaoIndex", lista);
+            return await NaturezaOperacaoIndex();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateNaturezaOperacao(NaturezaOperacaoViewModel natureza)
+        [HttpGet]
+        public async Task<IActionResult> UpdateNaturezaOperacao(Guid Id)
         {
-            return Ok();
+            if (Id == null) return NotFound();
+
+            var natureza = _autoMapper.Map<NaturezaOperacaoViewModel>(await _naturezaOperacaoService.ObterPorId(Id));
+
+            return View("NaturezaOperacao/EditNaturezaOperacao", natureza);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateNatureza(NaturezaOperacaoViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+
+            var model = await _naturezaOperacaoService.ObterPorId(viewModel.Id);
+            model.Descricao = viewModel.Descricao;
+
+            await _naturezaOperacaoService.Atualizar(model);
+
+            return await NaturezaOperacaoIndex();
         }
 
         #endregion

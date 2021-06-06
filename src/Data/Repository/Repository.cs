@@ -24,9 +24,10 @@ namespace Data.Repository
             await SaveChanges();
         }
 
-        public Task Atualizar(TEntity entity)
+        public virtual async Task Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            DbSet.Update(entity);
+            await SaveChanges();
         }
 
         public virtual async Task<TEntity> ObterPorId(Guid Id)

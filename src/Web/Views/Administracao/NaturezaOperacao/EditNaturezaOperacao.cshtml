@@ -1,33 +1,33 @@
-﻿@model Business.Financas.Models.NaturezaOperacao
+﻿@model Web.ViewModels.NaturezaOperacaoViewModel
 
 @{
-    ViewData["Title"] = "EditNaturezaOperacao";
+    ViewData["Title"] = "Editar Natureza Operação";
 }
 
-<h1>EditNaturezaOperacao</h1>
+<h4>@ViewData["Title"]</h4>
 
-<h4>NaturezaOperacao</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EditNaturezaOperacao">
+        <form asp-action="UpdateNatureza">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
             <div class="form-group">
                 <label asp-for="Descricao" class="control-label"></label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
-          
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="NaturezaOperacaoIndex" class="btn btn-info">Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
