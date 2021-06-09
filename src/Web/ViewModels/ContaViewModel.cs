@@ -7,5 +7,6 @@ namespace Web.ViewModels
 {
     public class ContaViewModel
     {
+        public Guid Id { get; set; }
     }
 }

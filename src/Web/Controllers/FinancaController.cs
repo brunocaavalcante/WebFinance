@@ -33,7 +33,7 @@ namespace Web.Controllers
             var operacoes = _autoMapper.Map<List<OperacaoViewModel>>(await _operacaoRepository.ObeterOperacoesPorConta(Guid.NewGuid()));
             return View(operacoes);
         }
-        
+
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -41,19 +41,19 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> CreateOperacaoAsync()
+        public async Task<ActionResult> CreateOperacao()
         {
             var operacaoViewModel = new OperacaoViewModel();
-            var listaNaturezaOp = _autoMapper.Map<List<NaturezaOperacaoViewModel>>( await _naturezaOperacaoRepository.ObeterNaturezaOpercao());
+            var listaNaturezaOp = _autoMapper.Map<List<NaturezaOperacaoViewModel>>(await _naturezaOperacaoRepository.ObeterNaturezaOpercao());
 
             operacaoViewModel.ListaNatureza = listaNaturezaOp.Select(n => new SelectListItem() { Text = n.Descricao, Value = n.Id.ToString() }).ToList();
 
-            return View(operacaoViewModel);
+            return View("Operacao/CreateOperacao", operacaoViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateOperacao(OperacaoViewModel operacaoViewModel)
+        public async Task<ActionResult> SalvarOperacao(OperacaoViewModel operacaoViewModel)
         {
             try
             {
@@ -61,8 +61,11 @@ namespace Web.Controllers
                 {
                     operacaoViewModel.Id = Guid.NewGuid();
                     operacaoViewModel.Valor = operacaoViewModel.Valor.Replace(",", ".");
-                    var operacao = _autoMapper.Map<Operacao>(operacaoViewModel);
+                    operacaoViewModel.DataCadastro = DateTime.Now;
 
+                    var operacao = _autoMapper.Map<Operacao>(operacaoViewModel);
+                    operacao.ContaId = Guid.Parse("5006ef38-fd62-45ae-8b9a-89192b34f227");
+                    
                     await _operacaoRepository.Adicionar(operacao);
                 }
 
